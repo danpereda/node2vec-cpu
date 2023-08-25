@@ -1,0 +1,107 @@
+[tool.ruff]
+extend-select = [
+    "B",
+    "BLE",
+    "C4",
+    "ERA",
+    "I",
+    "ICN",
+    "INP",
+    "S",
+    "PD",
+    "ISC",
+    "N",
+    "NPY",
+    "PGH",
+    "PIE",
+    "Q",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "T20",
+    "TCH",
+    "TID",
+    "YTT",
+]
+ignore = ["E402", "B905", "N818", "S101"]
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F"]
+unfixable = []
+show-fixes = true
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Assume Python 3.8.
+target-version = "py38"
+
+[tool.ruff.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+py_version = 38
+
+[tool.interrogate]
+fail-under = 90
+ignore-init-method = true
+ignore-init-module = true
+ignore-magic = true
+ignore-missing-raises = true
+ignore-semiprivate = false
+ignore-private = false
+exclude = ["setup.py", "docs", "venv", "build", "dist", "buck-out", ".tox", ".venv", ".git", ".hg", ".mypy_cache"]
+ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
+color = true
